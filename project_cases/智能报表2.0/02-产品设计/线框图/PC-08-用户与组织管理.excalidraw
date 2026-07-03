@@ -1,0 +1,29 @@
+{
+  "type": "excalidraw",
+  "version": 2,
+  "source": "https://excalidraw.com",
+  "elements": [
+    {"id":"header","type":"text","x":350,"y":20,"width":500,"height":35,"text":"PC-08 用户与组织管理 — Tree+Table | 组织树+用户表联动","fontSize":24,"fontFamily":1,"textAlign":"center"},
+    {"id":"left-panel","type":"rectangle","x":40,"y":65,"width":320,"height":620,"strokeColor":"#D9D9D9","backgroundColor":"#FFFFFF","fillStyle":"solid","strokeWidth":1,"roughness":0},
+    {"id":"left-title","type":"text","x":55,"y":75,"width":250,"height":18,"text":"组织架构 Tree (集团→港区→区域三级)","fontSize":14,"fontFamily":1},
+    {"id":"tree","type":"text","x":55,"y":105,"width":250,"height":200,"text":"▼ 🏢 集团总部\n  ├── ▶ 🏭 华南港区\n  ├── ▼ 🏭 华北港区\n  │   ├── ▶ 📍 A区域\n  │   ├── ● 📍 B区域  ← 当前选中\n  │   └── ▶ 📍 C区域\n  ├── ▶ 🏭 华东港区\n  └── ▶ 🏭 西部港区\n\n组件: Tree\n交互: 点击节点→右侧用户表过滤\n      为选中节点下的用户","fontSize":11,"fontFamily":3},
+    {"id":"right-panel","type":"rectangle","x":375,"y":65,"width":765,"height":620,"strokeColor":"#D9D9D9","backgroundColor":"#FFFFFF","fillStyle":"solid","strokeWidth":1,"roughness":0},
+    {"id":"right-title","type":"text","x":390,"y":75,"width":400,"height":18,"text":"用户列表 Table — 当前组织: 华北港区 > B区域","fontSize":14,"fontFamily":1},
+    {"id":"table-toolbar","type":"rectangle","x":390,"y":100,"width":735,"height":40,"strokeColor":"#1677FF","backgroundColor":"#E6F4FF","fillStyle":"solid","strokeWidth":1,"roughness":0},
+    {"id":"table-toolbar-txt","type":"text","x":400,"y":110,"width":700,"height":16,"text":"[🔍 搜索 Input] [角色▾ Select] [状态▾ Select] [排序▾ Select]  [+ 新增用户 Button→M16]","fontSize":11,"fontFamily":1},
+    {"id":"table-header","type":"rectangle","x":390,"y":145,"width":735,"height":32,"strokeColor":"#D9D9D9","backgroundColor":"#FAFAFA","fillStyle":"solid","strokeWidth":1,"roughness":0},
+    {"id":"table-header-txt","type":"text","x":400,"y":152,"width":715,"height":18,"text":"姓名(120) │ 工号(100) │ 角色 Tag(100) │ 所属组织(150) │ 状态 Tag(80) │ 操作(150)","fontSize":11,"fontFamily":1},
+    {"id":"urow1","type":"rectangle","x":390,"y":180,"width":735,"height":32,"strokeColor":"#D9D9D9","backgroundColor":"#FFFFFF","fillStyle":"solid","strokeWidth":1,"roughness":0},
+    {"id":"urow1-txt","type":"text","x":400,"y":187,"width":715,"height":18,"text":"张明    │ ZM001   │ 🟢报表创建者 │ 华北港区/B区域  │ 🟢启用 │ [编辑] [禁用] [重置密码]","fontSize":11,"fontFamily":1},
+    {"id":"urow2","type":"rectangle","x":390,"y":216,"width":735,"height":32,"strokeColor":"#D9D9D9","backgroundColor":"#FFFFFF","fillStyle":"solid","strokeWidth":1,"roughness":0},
+    {"id":"urow2-txt","type":"text","x":400,"y":223,"width":715,"height":18,"text":"李华    │ LH002   │ 🔵报表使用者 │ 华北港区/B区域  │ 🟢启用 │ [编辑] [禁用] [重置密码]","fontSize":11,"fontFamily":1},
+    {"id":"urow3","type":"rectangle","x":390,"y":252,"width":735,"height":32,"strokeColor":"#D9D9D9","backgroundColor":"#FFFFFF","fillStyle":"solid","strokeWidth":1,"roughness":0},
+    {"id":"urow3-txt","type":"text","x":400,"y":259,"width":715,"height":18,"text":"王磊    │ WL003   │ 🟣系统管理员 │ 华北港区        │ 🟢启用 │ [编辑] [禁用] [重置密码]","fontSize":11,"fontFamily":1},
+    {"id":"pagination","type":"text","x":900,"y":300,"width":240,"height":14,"text":"分页: [<] 1 2 3 [>] 共45条","fontSize":11,"fontFamily":1,"textAlign":"right"},
+    {"id":"modal-m16","type":"rectangle","x":450,"y":400,"width":480,"height":250,"strokeColor":"#722ED1","backgroundColor":"#F9F0FF","fillStyle":"solid","strokeWidth":2,"roughness":0},
+    {"id":"m16-txt","type":"text","x":470,"y":420,"width":440,"height":180,"text":"M16 用户CRUD (560px)\n触发: 新增/编辑用户\n┌─────────────────────────────┐\n│ 新增用户 / 编辑用户: 张明      │\n│ ─────────────────────────── │\n│ 姓名:   [Input: 张明]         │\n│ 工号:   [Input: ZM001]       │\n│ 角色:   [Select: 报表创建者▾]  │\n│ 所属组织: [TreeSelect]        │\n│ 手机号: [Input: 138xxxx]      │\n│ 密码:   [Input.Password]     │\n│ 状态:   [Switch: 启用/禁用]   │\n│ ─────────────────────────── │\n│ [取消 Button] [确认保存 Button]│\n└─────────────────────────────┘","fontSize":10,"fontFamily":1},
+    {"id":"exception-note","type":"text","x":60,"y":650,"width":700,"height":14,"text":"⚠ 异常: 组织树为空→'暂无组织数据' | 用户表为空→'该组织下暂无用户' | 删除确认→'确定删除用户{姓名}？'","fontSize":10,"fontFamily":1,"strokeColor":"#FAAD14"}
+  ],
+  "appState": {"gridSize":null,"viewBackgroundColor":"#f0f2f5"},
+  "files": {}
+}

@@ -1,0 +1,200 @@
+# 页面清单（机器可读）
+# 项目：智能报表2.0
+# 来源：PRD 第5.4节
+# 更新日期：2026-07-02
+
+total_pages: 8
+navigation:
+  type: "侧边栏一级菜单"
+  menus:
+    - key: "dashboard"
+      label: "分析看板"
+      icon: "DashboardOutlined"
+    - key: "ai-chat"
+      label: "AI 对话"
+      icon: "MessageOutlined"
+    - key: "card-library"
+      label: "卡片库"
+      icon: "AppstoreOutlined"
+    - key: "template-management"
+      label: "模板管理"
+      icon: "FileTextOutlined"
+      children: [template-editor, template-list, template-preview]
+    - key: "indicator-platform"
+      label: "指标平台"
+      icon: "ApiOutlined"
+    - key: "user-org"
+      label: "系统管理"
+      icon: "SettingOutlined"
+
+pages:
+  - id: "PC-01"
+    name: "分析看板"
+    route: "dashboard"
+    type: "Dashboard"
+    module: "分析看板"
+    menu: "分析看板"
+    description: "平台运营数据全景长滚动页面。4区域/15图表+2表格/全局筛选器吸顶/图表联动下钻"
+    features: ["F39","F40","F41","F42","F43","F44","F45","F46"]
+    charts: [统计卡片4x, 仪表盘Gauge, 环形图, 饼图2x, 折线+面积图, 分组柱状图, 堆叠柱状图, 散点图, 横向柱状图, 表格2x, 雷达图, 漏斗图, 桑基图, 树图]
+    interactions:
+      - "全局筛选器联动全部图表"
+      - "环形图扇区点击→排行表+柱状图联动过滤"
+      - "排行项点击→跳转PC-06"
+    exceptions:
+      - "图表数据为空：'暂无数据'占位"
+      - "图表渲染失败：'加载失败，点击重试'"
+      - "筛选后全页无数据：'当前条件下暂无数据'"
+    excalidraw_file: "PC-01-分析看板.excalidraw"
+
+  - id: "PC-02"
+    name: "AI 对话"
+    route: "ai-chat"
+    type: "Chat"
+    module: "AI 对话引擎"
+    menu: "AI 对话"
+    description: "对话式AI图表生成。多模型切换/多轮对话/图表内联配置/表格视图切换/一键收藏"
+    features: ["F01","F02","F03","F04","F05","F06","F07","F08"]
+    charts: [AI动态生成图表, 数据表格视图]
+    interactions:
+      - "输入问题→AI骨架屏→SQL→查询→渲染图表+摘要"
+      - "⚙️配置/📊表格/🔗联动/📥导出/⭐收藏 按钮"
+      - "点击⚙️→内联配置面板展开"
+      - "模型下拉框→切换AI模型"
+    exceptions:
+      - "AI无法理解：'请具体说明分析维度...'"
+      - "指标平台断开：'指标平台连接失败...'"
+      - "查询超时：'请尝试缩小数据范围'"
+      - "模型调用失败：'当前模型调用失败，请尝试切换'"
+    excalidraw_file: "PC-02-AI对话.excalidraw"
+
+  - id: "PC-03"
+    name: "卡片库"
+    route: "card-library"
+    type: "List+Grid"
+    module: "卡片库管理"
+    menu: "卡片库"
+    description: "可复用图表卡片集中管理。网格/列表双视图/搜索过滤/分类标签/拖拽到编辑器"
+    features: ["F09","F10","F11","F12","F13","F14"]
+    modals:
+      - {id: "M11", name: "卡片详情", trigger: "点击卡片", width: 720, content: "大图渲染+属性详情"}
+      - {id: "M12", name: "编辑卡片", trigger: "⋮→编辑", width: 640, content: "标题/类型/数据绑定/样式"}
+    interactions:
+      - "拖拽卡片缩略图→可拖入PC-04编辑器"
+      - "⋮→编辑/复制/删除"
+      - "复制→Toast:'已复制'"
+      - "删除→二次确认→Toast:'已删除'"
+    exceptions:
+      - "卡片库为空：空状态插画+'从AI对话创建第一张卡片'引导"
+      - "搜索结果为空：'未找到匹配的卡片'"
+    excalidraw_file: "PC-03-卡片库.excalidraw"
+
+  - id: "PC-04"
+    name: "模板编辑器"
+    route: "template-editor"
+    type: "Editor"
+    module: "模板管理"
+    menu: "模板管理"
+    description: "三栏拖拽可视化编辑器。左组件库/中画布(react-grid-layout 12列)/右属性面板。编辑/预览同state"
+    features: ["F16","F17","F18","F19","F20","F21","F22","F23","F25"]
+    components:
+      - {type: "react-grid-layout", config: {cols: 12, rowHeight: 8, compactType: "vertical"}}
+      - {type: "panel-left", content: "组件库", items: ["图表卡片","文本块(Markdown)","图片"]}
+      - {type: "panel-center", content: "画布", features: ["拖拽放置","缩放调整","网格对齐","撤销/重做","预览切换"]}
+      - {type: "panel-right", content: "属性面板", contexts: ["图表→标题/类型/数据/样式","文本→Markdown+预览","图片→预览+更换+说明","未选中→Tab管理"]}
+    modals:
+      - {id: "M10", name: "保存模板", trigger: "点击保存", width: 480, content: "名称/分类/描述"}
+    interactions:
+      - "从组件库拖拽到画布→新增卡片，自动布局"
+      - "画布卡片缩放→ECharts resize()自适应"
+      - "isPreview切换→隐藏编辑UI，canvasItems+filters不变"
+      - "右键菜单→编辑/复制/删除/置顶/置底"
+      - "撤销/重做→50步，Ctrl+Z/Y"
+    exceptions:
+      - "画布为空：空状态插画+'从左侧拖拽组件开始'"
+      - "撤销栈为空：按钮disabled"
+      - "重做栈为空：按钮disabled"
+      - "删除确认：'确定删除该组件？'"
+    excalidraw_file: "PC-04-模板编辑器.excalidraw"
+
+  - id: "PC-05"
+    name: "模板列表"
+    route: "template-list"
+    type: "List"
+    module: "模板管理"
+    menu: "模板管理"
+    description: "已保存模板列表管理。搜索/排序/推送弹窗含历史摘要"
+    features: ["F24","F26","F27"]
+    modals:
+      - {id: "M13", name: "创建推送任务", trigger: "点击推送", width: 560, content: "模板→频率→时间→推送人→底部历史摘要"}
+    interactions:
+      - "点击模板行→跳转PC-06"
+      - "推送按钮→M13"
+      - "新建→跳转PC-04"
+      - "编辑→跳转PC-04加载模板"
+    exceptions:
+      - "模板列表为空：'暂无模板'"
+      - "推送人列表为空：'请先在系统管理中添加用户'"
+    excalidraw_file: "PC-05-模板列表.excalidraw"
+
+  - id: "PC-06"
+    name: "模板预览"
+    route: "template-preview"
+    type: "Detail+Interactive"
+    module: "模板管理"
+    menu: "模板管理"
+    description: "已发布报表在线查看和交互探索。筛选器/图表联动/钻取下钻/导出"
+    features: ["F28","F29","F30"]
+    modals:
+      - {id: "M14", name: "数据钻取明细", trigger: "点击数据点", width: 800, content: "明细数据表格+排序+搜索+导出"}
+    interactions:
+      - "筛选器切换→全部图表刷新+loading"
+      - "图表钻取→弹窗M14明细表"
+      - "图表联动→点击扇区/柱子→其他图表过滤"
+      - "导出→PDF/Excel/图片下载"
+    exceptions:
+      - "报表不存在：'报表已失效或被删除'"
+      - "筛选后无数据：各图表'暂无数据'占位"
+    excalidraw_file: "PC-06-模板预览.excalidraw"
+
+  - id: "PC-07"
+    name: "指标平台对接"
+    route: "indicator-platform"
+    type: "Config+Tree"
+    module: "指标平台对接"
+    menu: "指标平台"
+    description: "外部指标平台连接配置和指标目录浏览。连接表单+指标树+Drawer详情"
+    features: ["F31","F32","F33","F34","F35"]
+    modals:
+      - {id: "M15", name: "指标详情", trigger: "点击指标节点", type: "Drawer", width: 480, content: "指标定义/计算口径/维度/数据预览"}
+    interactions:
+      - "保存配置→测试连接→Toast成功/失败"
+      - "指标树折叠展开→点击节点→M15滑出"
+      - "指标搜索→实时过滤树"
+      - "同步指标→loading→完成提示"
+    exceptions:
+      - "连接测试失败：'连接失败：{错误信息}'"
+      - "指标目录为空：'暂无可用指标，请检查连接配置'"
+      - "API超时：'请求超时，请重试'"
+    excalidraw_file: "PC-07-指标平台对接.excalidraw"
+
+  - id: "PC-08"
+    name: "用户与组织管理"
+    route: "user-org"
+    type: "Tree+Table"
+    module: "系统管理"
+    menu: "系统管理"
+    description: "双面板。左组织树(集团→港区→区域)/右用户表格(随组织切换过滤)"
+    features: ["F41b","F42b"]
+    modals:
+      - {id: "M16", name: "用户CRUD", trigger: "新增/编辑", width: 560, content: "姓名/账号/角色/组织/状态"}
+    interactions:
+      - "点击组织树节点→右侧用户表过滤"
+      - "用户表搜索/排序/分页"
+      - "新增/编辑→M16"
+      - "删除→二次确认→Toast"
+    exceptions:
+      - "组织树为空：'暂无组织数据'"
+      - "用户表为空：'该组织下暂无用户'"
+      - "删除确认：'确定删除用户{姓名}？'"
+    excalidraw_file: "PC-08-用户与组织管理.excalidraw"

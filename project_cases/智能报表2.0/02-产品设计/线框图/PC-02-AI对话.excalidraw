@@ -1,0 +1,32 @@
+{
+  "type": "excalidraw",
+  "version": 2,
+  "source": "https://excalidraw.com",
+  "elements": [
+    {"id":"header","type":"text","x":350,"y":20,"width":500,"height":35,"text":"PC-02 AI 对话 — Chat | 多模型切换","fontSize":24,"fontFamily":1,"textAlign":"center"},
+    {"id":"topbar","type":"rectangle","x":40,"y":65,"width":1100,"height":48,"strokeColor":"#1677FF","backgroundColor":"#E6F4FF","fillStyle":"solid","strokeWidth":2,"roughness":0},
+    {"id":"topbar-txt","type":"text","x":60,"y":75,"width":600,"height":16,"text":"顶部栏: [模型: Claude ▾] [模型: DeepSeek ▾] [模型: 通义千问 ▾]  组件: Select   [新对话 Button]","fontSize":12,"fontFamily":1},
+    {"id":"chat-area","type":"rectangle","x":40,"y":125,"width":840,"height":480,"strokeColor":"#D9D9D9","backgroundColor":"#FFFFFF","fillStyle":"solid","strokeWidth":1,"roughness":0},
+    {"id":"chat-title","type":"text","x":55,"y":133,"width":300,"height":16,"text":"对话区域（overflow-y:auto 滚动）","fontSize":14,"fontFamily":1},
+    {"id":"user-msg","type":"rectangle","x":430,"y":160,"width":435,"height":55,"strokeColor":"#1677FF","backgroundColor":"#E6F4FF","fillStyle":"solid","strokeWidth":1,"roughness":0},
+    {"id":"user-msg-txt","type":"text","x":445,"y":170,"width":410,"height":35,"text":"👤 用户  14:32\n各港区上月能耗同比变化趋势","fontSize":12,"fontFamily":1},
+    {"id":"ai-msg-bg","type":"rectangle","x":55,"y":230,"width":810,"height":200,"strokeColor":"#D9D9D9","backgroundColor":"#FAFAFA","fillStyle":"solid","strokeWidth":1,"roughness":0},
+    {"id":"ai-msg-header","type":"text","x":70,"y":240,"width":200,"height":14,"text":"🤖 AI  14:33","fontSize":12,"fontFamily":1},
+    {"id":"chart-area","type":"rectangle","x":70,"y":260,"width":600,"height":140,"strokeColor":"#52C41A","backgroundColor":"#F6FFED","fillStyle":"solid","strokeWidth":1,"roughness":0},
+    {"id":"chart-txt","type":"text","x":85,"y":300,"width":570,"height":40,"text":"📈 ECharts 折线图 (AI自动推荐类型)\n组件: ReactECharts | 数据绑定: 指标平台查询结果\n华南↓8% 华北↑5% 华东↑2%","fontSize":11,"fontFamily":1},
+    {"id":"chart-btns","type":"text","x":680,"y":265,"width":90,"height":70,"text":"⚙️配置\n📊表格\n🔗联动\n📥导出\n⭐收藏","fontSize":10,"fontFamily":1,"strokeColor":"#1677FF"},
+    {"id":"config-panel","type":"rectangle","x":70,"y":410,"width":780,"height":45,"strokeColor":"#FAAD14","backgroundColor":"#FFFBE6","fillStyle":"solid","strokeWidth":1,"roughness":0},
+    {"id":"config-txt","type":"text","x":85,"y":420,"width":750,"height":14,"text":"内联配置面板（点击⚙️展开）: [标题 Input] [图表类型 Select: 折线图/柱状图/饼图] [配色方案 ▾] [重新生成 Button] [保存到卡片库 Button]","fontSize":11,"fontFamily":1},
+    {"id":"ai-summary","type":"rectangle","x":70,"y":465,"width":780,"height":30,"strokeColor":"#D9D9D9","backgroundColor":"#FFFFFF","fillStyle":"solid","strokeWidth":1,"roughness":0},
+    {"id":"ai-summary-txt","type":"text","x":85,"y":472,"width":750,"height":16,"text":"💡 AI分析结论: 华南港区能耗同比下降8%，主要因... [展开全文]","fontSize":11,"fontFamily":1},
+    {"id":"suggestion-bar","type":"rectangle","x":55,"y":510,"width":810,"height":40,"strokeColor":"#D9D9D9","backgroundColor":"#FAFAFA","fillStyle":"solid","strokeWidth":1,"roughness":0},
+    {"id":"suggestion-txt","type":"text","x":70,"y":520,"width":780,"height":14,"text":"💡 试试: 碳排放趋势 | 故障率排名 | 各港区吞吐量对比 | 安全事故统计","fontSize":11,"fontFamily":1},
+    {"id":"chat-input-area","type":"rectangle","x":55,"y":560,"width":810,"height":40,"strokeColor":"#1677FF","backgroundColor":"#FFFFFF","fillStyle":"solid","strokeWidth":1,"roughness":0},
+    {"id":"chat-input-txt","type":"text","x":70,"y":570,"width":700,"height":16,"text":"💬 输入问题...                                                                     [发送 Button]","fontSize":12,"fontFamily":1},
+    {"id":"sidebar-right","type":"rectangle","x":895,"y":125,"width":245,"height":480,"strokeColor":"#D9D9D9","backgroundColor":"#FAFAFA","fillStyle":"solid","strokeWidth":1,"roughness":0},
+    {"id":"sidebar-txt","type":"text","x":910,"y":140,"width":215,"height":60,"text":"对话历史面板\n---\n历史对话1: 能耗趋势\n历史对话2: 故障率分析\n历史对话3: 碳排放\n[+ 新对话 Button]","fontSize":11,"fontFamily":1},
+    {"id":"loading-note","type":"text","x":60,"y":620,"width":700,"height":14,"text":"⚠ 异常态: AI骨架屏(查询中) → AI无法理解'请具体说明分析维度...' → 指标断开'连接失败' → 超时'缩小数据范围' → 模型失败'切换模型'","fontSize":10,"fontFamily":1,"strokeColor":"#FAAD14"}
+  ],
+  "appState": {"gridSize":null,"viewBackgroundColor":"#f0f2f5"},
+  "files": {}
+}

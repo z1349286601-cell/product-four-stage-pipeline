@@ -1,0 +1,156 @@
+# pipeline-status.yaml — 产品流水线状态文件
+# 版本：v2.2
+# 此文件由所有 branch 共享读写。修改时必须遵循"先读后写"原则。
+#
+# 写入防护规则：
+#   修改前必须二次读取，对比 pipeline.updated 时间戳。
+#   若与本次会话初始读取时不一致 → 暂停，提示用户其他 Branch 可能同时在写。
+
+pipeline:
+  project: "港口集装箱理货数据分析平台"                      # ← 项目正式全称（AI 首次启动时询问并填入）
+  project_root: "D:\\AI\\workspace\\claudecode_deepseek_workspace\\产品四阶段流水线优化\\project_cases\\集装箱理货系统分析平台"  # ← AI 首次读取时自动填入 CLAUDE.md 所在目录的绝对路径
+  created: "2026-07-03"                                     # ← AI 首次启动时填入当前日期
+  updated: "2026-07-03T17:30:00"                            # ← 任何写入操作时更新
+  description: "面向理货公司/第三方理货服务商的港口集装箱理货数据分析平台，聚焦理货准确率、作业效率、异常预警与报告输出"  # ← AI 首次启动时根据用户描述填入
+
+  # make 项目配置
+  # path 由 Branch B（原型开发）启动时向用户获取
+  make_project:
+    path: "D:\\AI\\workspace\\axhub_workspace\\jzxznlhxtfxpt"                                                # ← Branch B 启动时询问用户（make 项目绝对路径）
+    theme: "src/themes/antd-pro/DESIGN.md"                   # 设计基底（相对于 make 项目根目录）
+    prototype_dir: "src/prototypes"                          # 原型存放目录（相对于 make 项目根目录）
+    status: "ready"                                          # pending → 用户提供路径后 → ready
+
+# ============================================================
+# 会话命名约定
+# ============================================================
+# Master（主会话） → 负责 stage-1，写入 01-调研与资料/
+# 产品设计          → 负责 stage-2 + stage-3，写入 02-产品设计/
+# 原型开发          → 负责 stage-4，写入 make 项目 src/prototypes/
+#
+# 目录编号与会话一一对应：
+#   01-调研与资料/ ← Master
+#   02-产品设计/   ← 产品设计
+#   03-原型/       ← 原型开发（仅存 README，指向 make 项目中的实际代码）
+
+stages:
+  # ============================================================
+  # Stage 1: 调研与资料收集（Master 负责）
+  # ============================================================
+  - id: stage-1
+    name: "调研与资料收集"
+    session: "master"
+    branch_id: ""
+    status: "done"                                          # not_started | in_progress | done | needs_update
+    synced_upstream_versions: []
+    outputs:
+      - path: "01-调研与资料/竞品调研报告.md"
+        version: 1
+        last_modified: "2026-07-03"
+        description: "竞品分析报告：行业背景/竞品选取逻辑/功能基准矩阵/逐家分析/差异化机会"
+        downstream_impact:
+          - target_stage: "stage-2"
+            impact_type: "功能级"
+            description: "调研结论变更 → 需重新审视功能决策"
+
+  # ============================================================
+  # Stage 2: 业务功能分析（产品设计 负责前半段）
+  # 本阶段产物为对话确认（功能清单/流程/术语），书面化内容直接写入 PRD.md（stage-3 产出）
+  # ============================================================
+  - id: stage-2
+    name: "业务功能分析"
+    session: "产品设计"
+    branch_id: ""
+    status: "done"
+    synced_upstream_versions:
+      - upstream_stage: "stage-1"
+        upstream_file: "01-调研与资料/竞品调研报告.md"
+        synced_version: 1
+    outputs: []
+    # 本阶段无独立文件产出。功能清单/流程/术语在对话中逐项确认，
+    # 确认后的内容在 stage-3 写入 PRD.md 对应章节（第1-4章）。
+    # stage-2 修改 → 强制 stage-3.status = needs_update
+
+  # ============================================================
+  # Stage 3: 线框图与PRD（产品设计 负责后半段）
+  # 注意：stage-2 和 stage-3 同属「产品设计」会话，但版本号互不联动。
+  #       仅修改 stage-3（如调线框图布局）→ stage-2 版本号不变。
+  #       修改 stage-2（如新增功能点）→ 强制 stage-3.status = needs_update。
+  # ============================================================
+  - id: stage-3
+    name: "线框图与PRD"
+    session: "产品设计"
+    branch_id: ""
+    status: "done"
+    outputs:
+      - path: "02-产品设计/页面清单.yaml"
+        version: 1
+        last_modified: "2026-07-03"
+        description: "结构化页面清单：编号/名称/路由/页面类型/归属模块/核心功能点"
+        downstream_impact:
+          - target_stage: "stage-4"
+            impact_type: "功能级"
+            description: "页面增删 → 原型需增删页面；页面类型变更 → 原型组件需调整"
+      - path: "02-产品设计/线框图/"
+        version: 1
+        last_modified: "2026-07-03"
+        description: "每页一个 .excalidraw 文件"
+        downstream_impact:
+          - target_stage: "stage-4"
+            impact_type: "布局级"
+            description: "线框图布局变更 → 原型页面布局需同步"
+      - path: "02-产品设计/PRD.md"
+        version: 1
+        last_modified: "2026-07-03"
+        description: "完整需规文档：8章+3附录"
+        downstream_impact:
+          - target_stage: "stage-4"
+            impact_type: "功能级"
+            description: "PRD交互行为表/异常处理表变更 → 原型需同步"
+      - path: "02-产品设计/_同步校验记录.md"
+        version: 1
+        last_modified: "2026-07-03"
+        description: "PRD ↔ 线框图 一致性检查记录"
+        downstream_impact: []
+
+  # ============================================================
+  # Stage 4: 高保真原型（原型开发 负责）
+  # ============================================================
+  - id: stage-4
+    name: "高保真原型"
+    session: "原型开发"
+    branch_id: ""
+    status: "in_progress"
+    synced_upstream_versions:
+      - upstream_stage: "stage-3"
+        upstream_file: "02-产品设计/页面清单.yaml"
+        synced_version: 1
+      - upstream_stage: "stage-3"
+        upstream_file: "02-产品设计/PRD.md"
+        synced_version: 1
+    outputs:
+      - path: "03-原型/"
+        version: 0
+        last_modified: ""
+        description: "原型代码位于 make 项目中（路径由 Branch B 启动时获取）"
+        downstream_impact: []
+      - path: "03-原型/.spec/checklist.md"
+        version: 0
+        last_modified: ""
+        description: "开发核对清单"
+        downstream_impact: []
+      - path: "03-原型/.spec/acceptance-checklist.md"
+        version: 0
+        last_modified: ""
+        description: "验收检查清单"
+        downstream_impact: []
+      - path: "03-原型/.spec/acceptance-report.md"
+        version: 0
+        last_modified: ""
+        description: "验收报告"
+        downstream_impact: []
+
+# ============================================================
+# 迭代历史（仅存元数据索引，详情见 _迭代日志/<id>.md）
+# ============================================================
+iterations: []

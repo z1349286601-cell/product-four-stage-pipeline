@@ -1,0 +1,27 @@
+{
+  "type": "excalidraw",
+  "version": 2,
+  "source": "https://excalidraw.com",
+  "elements": [
+    {"id":"header","type":"text","x":380,"y":20,"width":500,"height":35,"text":"PC-05 模板列表 — List | 搜索+推送弹窗","fontSize":24,"fontFamily":1,"textAlign":"center"},
+    {"id":"toolbar","type":"rectangle","x":40,"y":65,"width":1100,"height":48,"strokeColor":"#1677FF","backgroundColor":"#E6F4FF","fillStyle":"solid","strokeWidth":2,"roughness":0},
+    {"id":"toolbar-txt","type":"text","x":60,"y":75,"width":1000,"height":14,"text":"操作栏: [🔍 搜索 Input] [分类: 全部/能碳/设备/安全/商务 Tag] [排序 Select] [✚ 新建模板 Button→跳转PC-04]","fontSize":12,"fontFamily":1},
+    {"id":"table-area","type":"rectangle","x":40,"y":125,"width":1100,"height":400,"strokeColor":"#D9D9D9","backgroundColor":"#FFFFFF","fillStyle":"solid","strokeWidth":1,"roughness":0},
+    {"id":"table-title","type":"text","x":55,"y":135,"width":200,"height":16,"text":"模板列表 Table","fontSize":14,"fontFamily":1},
+    {"id":"table-header","type":"rectangle","x":55,"y":160,"width":1070,"height":36,"strokeColor":"#D9D9D9","backgroundColor":"#FAFAFA","fillStyle":"solid","strokeWidth":1,"roughness":0},
+    {"id":"table-header-txt","type":"text","x":65,"y":168,"width":1050,"height":18,"text":"模板名称(200px) │ 分类(120px) │ 卡片数(80px) │ 推送状态 Tag(100px) │ 更新时间(160px) │ 操作(200px)","fontSize":12,"fontFamily":1},
+    {"id":"row1","type":"rectangle","x":55,"y":200,"width":1070,"height":36,"strokeColor":"#D9D9D9","backgroundColor":"#FFFFFF","fillStyle":"solid","strokeWidth":1,"roughness":0},
+    {"id":"row1-txt","type":"text","x":65,"y":208,"width":1050,"height":18,"text":"月度能碳报告        │ 能碳       │ 4     │ 🟢推送中    │ 2026-07-01 08:30   │ [预览→PC06] [编辑→PC04] [推送→M13] [⋮]","fontSize":12,"fontFamily":1},
+    {"id":"row2","type":"rectangle","x":55,"y":240,"width":1070,"height":36,"strokeColor":"#D9D9D9","backgroundColor":"#FFFFFF","fillStyle":"solid","strokeWidth":1,"roughness":0},
+    {"id":"row2-txt","type":"text","x":65,"y":248,"width":1050,"height":18,"text":"设备运行监控        │ 设备       │ 3     │ ⚪未推送    │ 2026-06-28 14:15   │ [预览→PC06] [编辑→PC04] [推送→M13] [⋮]","fontSize":12,"fontFamily":1},
+    {"id":"row3","type":"rectangle","x":55,"y":280,"width":1070,"height":36,"strokeColor":"#D9D9D9","backgroundColor":"#FFFFFF","fillStyle":"solid","strokeWidth":1,"roughness":0},
+    {"id":"row3-txt","type":"text","x":65,"y":288,"width":1050,"height":18,"text":"安全生产日报        │ 安全       │ 5     │ 🔴推送失败  │ 2026-06-25 09:00   │ [预览→PC06] [编辑→PC04] [推送→M13] [⋮]","fontSize":12,"fontFamily":1},
+    {"id":"pagination","type":"text","x":800,"y":340,"width":300,"height":16,"text":"分页: [<] 1 2 3 ... 10 [>] 共128条","fontSize":12,"fontFamily":1,"textAlign":"right"},
+    {"id":"empty-note","type":"text","x":60,"y":360,"width":400,"height":14,"text":"⚠ 空状态: '暂无模板'","fontSize":10,"fontFamily":1,"strokeColor":"#FAAD14"},
+    {"id":"modal-m13","type":"rectangle","x":250,"y":530,"width":600,"height":300,"strokeColor":"#722ED1","backgroundColor":"#F9F0FF","fillStyle":"solid","strokeWidth":2,"roughness":0},
+    {"id":"m13-txt","type":"text","x":270,"y":550,"width":560,"height":200,"text":"M13 创建推送任务 (560px)\n触发: 点击推送按钮\n┌──────────────────────────────────────┐\n│ 选择模板: [月度能碳报告 ▾ Select]       │\n│ 推送频率: ○每日 ○每周 ○每月 Radio      │\n│ 推送时间: [08 ▾] : [00 ▾] TimePicker  │\n│ 推送人:   [陈总,186xxx ▾] MultiSelect  │\n│ 推送渠道: ☑邮件 ☑企微 ☐钉钉 Checkbox   │\n│                                      │\n│ [取消 Button] [确认创建 Button]        │\n├──────────────────────────────────────┤\n│ 📋 历史推送记录 (折叠/展开):           │\n│ 07-01 08:00 成功 12人\n│ 06-01 08:00 成功 12人                 │\n│ 05-01 08:00 失败 重试中               │\n└──────────────────────────────────────┘","fontSize":10,"fontFamily":1},
+    {"id":"m13-arrow","type":"arrow","x":550,"y":440,"width":200,"height":80,"strokeColor":"#722ED1","strokeWidth":2,"roughness":0,"points":[[0,0],[200,80]]}
+  ],
+  "appState": {"gridSize":null,"viewBackgroundColor":"#f0f2f5"},
+  "files": {}
+}

@@ -1,0 +1,101 @@
+# pipeline-status.yaml — 产品流水线状态文件
+# 项目：智能报表2.0
+# 版本：v1.0
+# 此文件由所有 branch 共享读写。
+
+pipeline:
+  project: "智能报表2.0"
+  created: "2026-07-02"
+  updated: "2026-07-02T22:00:00"
+  description: "AI驱动报表工具v2.0，覆盖AI对话生成图表→自助拖拽拼装报告→模板保存→定时推送全链路"
+
+  make_project:
+    path: "D:/AI/workspace/axhub_workspace/znbb2.0"
+    theme: "src/themes/antd-pro/DESIGN.md"
+    prototype_dir: "src/prototypes"
+    status: "ready"
+
+stages:
+  - id: stage-1
+    name: "调研与资料收集"
+    session: "master"
+    status: "done"
+    synced_upstream_versions: []
+    outputs:
+      - path: "01-调研与资料/竞品调研报告.md"
+        version: 1
+        last_modified: "2026-07-01"
+        description: "8竞品（直接竞品4+泛行业标杆4），7模块70+功能点"
+        downstream_impact:
+          - target_stage: "stage-2"
+            impact_type: "功能级"
+            description: "调研结论 → 功能决策依据"
+
+  - id: stage-2
+    name: "业务功能分析"
+    session: "产品设计"
+    status: "done"
+    synced_upstream_versions:
+      - upstream_stage: "stage-1"
+        upstream_file: "01-调研与资料/竞品调研报告.md"
+        synced_version: 1
+    outputs: []
+
+  - id: stage-3
+    name: "线框图与PRD"
+    session: "产品设计"
+    status: "done"
+    synced_upstream_versions:
+      - upstream_stage: "stage-2"
+        upstream_file: ""
+        synced_version: 1
+    outputs:
+      - path: "02-产品设计/PRD.md"
+        version: 1
+        last_modified: "2026-07-02"
+        description: "完整需规文档 V1.0：8章/8页/44功能点/7弹窗/5闭环"
+        downstream_impact:
+          - target_stage: "stage-4"
+            impact_type: "功能级"
+            description: "PRD交互行为表/异常处理表变更 → 原型需同步"
+      - path: "02-产品设计/页面清单.yaml"
+        version: 1
+        last_modified: "2026-07-02"
+        description: "8页面结构化索引：编号/名称/路由/类型/模块/功能点/交互/异常/弹窗"
+        downstream_impact:
+          - target_stage: "stage-4"
+            impact_type: "功能级"
+            description: "页面增删 → 原型需增删页面"
+      - path: "02-产品设计/线框图/"
+        version: 1
+        last_modified: "2026-07-02"
+        description: "8页 Excalidraw 线框图：标注区域/组件/数据绑定/交互/异常/弹窗"
+        downstream_impact:
+          - target_stage: "stage-4"
+            impact_type: "布局级"
+            description: "线框图布局变更 → 原型页面布局需同步"
+      - path: "02-产品设计/_同步校验记录.md"
+        version: 1
+        last_modified: "2026-07-02"
+        description: "PRD ↔ 线框图 17项一致性检查，全部通过"
+        downstream_impact: []
+
+  - id: stage-4
+    name: "高保真原型"
+    session: "原型开发"
+    status: "not_started"
+    synced_upstream_versions:
+      - upstream_stage: "stage-3"
+        upstream_file: "02-产品设计/页面清单.yaml"
+        synced_version: 1
+      - upstream_stage: "stage-3"
+        upstream_file: "02-产品设计/PRD.md"
+        synced_version: 1
+    outputs:
+      - path: "03-原型/"
+        version: 0
+        last_modified: ""
+        description: "原型代码位于 make 项目中（znbb2.0/src/prototypes/smart-report-2.0/）"
+        downstream_impact: []
+
+iterations: []

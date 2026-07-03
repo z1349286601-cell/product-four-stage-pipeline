@@ -1,0 +1,39 @@
+# Dependencies
+node_modules/
+
+# Build output
+dist/
+.vite/
+
+# Axhub runtime
+.axhub/
+
+# IDE
+.vscode/
+.idea/
+
+# OS
+.DS_Store
+Thumbs.db
+
+# Env
+.env
+.env.local
+
+# Logs
+*.log
+
+# Claude Code (project-level, not global)
+.claude/
+
+# Make project template (too large for git, manually distributed)
+make-project-template/
+
+# Extracted template copies
+project_cases/axhub-make-client-template/
+
+# Old project cases (keep only demo)
+project_cases/智能报表平台/
+
+# Archives
+*.zip

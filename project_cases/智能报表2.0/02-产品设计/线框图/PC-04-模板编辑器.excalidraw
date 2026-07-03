@@ -1,0 +1,32 @@
+{
+  "type": "excalidraw",
+  "version": 2,
+  "source": "https://excalidraw.com",
+  "elements": [
+    {"id":"header","type":"text","x":330,"y":20,"width":600,"height":35,"text":"PC-04 模板编辑器 — Editor | 三栏 react-grid-layout","fontSize":24,"fontFamily":1,"textAlign":"center"},
+    {"id":"topbar","type":"rectangle","x":40,"y":65,"width":1100,"height":48,"strokeColor":"#1677FF","backgroundColor":"#E6F4FF","fillStyle":"solid","strokeWidth":2,"roughness":0},
+    {"id":"topbar-txt","type":"text","x":60,"y":75,"width":1000,"height":14,"text":"顶部栏: [← 返回模板列表] [模板名称: 未命名模板 ✎] [撤销 Ctrl+Z] [重做 Ctrl+Y] [🔍 预览/编辑 切换 Switch isPreview] [💾 保存→M10]","fontSize":12,"fontFamily":1},
+    {"id":"left-panel","type":"rectangle","x":40,"y":125,"width":200,"height":580,"strokeColor":"#D9D9D9","backgroundColor":"#FAFAFA","fillStyle":"solid","strokeWidth":2,"roughness":0},
+    {"id":"left-title","type":"text","x":50,"y":135,"width":180,"height":18,"text":"组件库 (240px)","fontSize":15,"fontFamily":1},
+    {"id":"comp-chart","type":"rectangle","x":50,"y":165,"width":180,"height":80,"strokeColor":"#52C41A","backgroundColor":"#F6FFED","fillStyle":"solid","strokeWidth":1,"roughness":0},
+    {"id":"comp-chart-txt","type":"text","x":60,"y":185,"width":160,"height":40,"text":"📊 图表卡片\n组件类型: ReactECharts\n可拖拽 | 搜索选择已有卡片\n数据绑定: 卡片库卡片","fontSize":10,"fontFamily":1},
+    {"id":"comp-text","type":"rectangle","x":50,"y":255,"width":180,"height":80,"strokeColor":"#1677FF","backgroundColor":"#E6F4FF","fillStyle":"solid","strokeWidth":1,"roughness":0},
+    {"id":"comp-text-txt","type":"text","x":60,"y":275,"width":160,"height":40,"text":"📝 文本块\n组件类型: react-markdown\n支持 Markdown 语法\n可重复拖入多个","fontSize":10,"fontFamily":1},
+    {"id":"comp-img","type":"rectangle","x":50,"y":345,"width":180,"height":80,"strokeColor":"#FAAD14","backgroundColor":"#FFFBE6","fillStyle":"solid","strokeWidth":1,"roughness":0},
+    {"id":"comp-img-txt","type":"text","x":60,"y":370,"width":160,"height":30,"text":"🖼 图片\n组件类型: <img>\n拖入后上传 | 等比缩放","fontSize":10,"fontFamily":1},
+    {"id":"canvas","type":"rectangle","x":255,"y":125,"width":600,"height":580,"strokeColor":"#D9D9D9","backgroundColor":"#FFFFFF","fillStyle":"solid","strokeWidth":2,"roughness":0},
+    {"id":"canvas-title","type":"text","x":265,"y":135,"width":300,"height":18,"text":"画布 — react-grid-layout (12列, rowHeight=8, compactType=vertical)","fontSize":14,"fontFamily":1},
+    {"id":"canvas-empty","type":"text","x":400,"y":380,"width":300,"height":40,"text":"🖼 空状态插画\n'从左侧拖拽组件开始创建报告'\n（当canvasItems.length === 0）","fontSize":12,"fontFamily":1,"textAlign":"center","strokeColor":"#9DA4B4"},
+    {"id":"grid-lines","type":"text","x":265,"y":160,"width":500,"height":60,"text":"┌──────────┬──────────┬──────────┬──────────┐\n│ col 1-3  │ col 4-6  │ col 7-9  │ col 10-12│  12列网格\n│  (卡片1)  │  (卡片2)  │  (文本块1) │  (图片1)  │  拖入自动吸附\n└──────────┴──────────┴──────────┴──────────┘","fontSize":10,"fontFamily":3},
+    {"id":"right-panel","type":"rectangle","x":870,"y":125,"width":270,"height":580,"strokeColor":"#D9D9D9","backgroundColor":"#FAFAFA","fillStyle":"solid","strokeWidth":2,"roughness":0},
+    {"id":"right-title","type":"text","x":880,"y":135,"width":250,"height":18,"text":"属性面板 (320px)","fontSize":15,"fontFamily":1},
+    {"id":"right-context","type":"text","x":880,"y":165,"width":250,"height":200,"text":"按选中组件类型切换:\n\n📊 图表卡片选中时:\n  标题: [Input]\n  图表类型: [Select]\n  数据指标: [Select]\n  维度: [Select]\n  样式: [配色▾] [图例Switch]\n  布局: x/y/w/h\n\n📝 文本块选中时:\n  [Markdown编辑区 TextArea]\n  [预览 Tab]\n\n🖼 图片选中时:\n  [预览缩略图]\n  [更换图片 Button]\n  [说明文字 Input]\n\n未选中:\n  Tab管理面板","fontSize":10,"fontFamily":1},
+    {"id":"context-menu","type":"rectangle","x":500,"y":200,"width":120,"height":100,"strokeColor":"#722ED1","backgroundColor":"#F9F0FF","fillStyle":"solid","strokeWidth":1,"roughness":0},
+    {"id":"context-txt","type":"text","x":510,"y":215,"width":100,"height":70,"text":"右键菜单:\n编辑属性\n复制\n删除\n───\n置于顶层\n置于底层","fontSize":9,"fontFamily":1},
+    {"id":"modal-m10","type":"rectangle","x":300,"y":350,"width":350,"height":130,"strokeColor":"#722ED1","backgroundColor":"#F9F0FF","fillStyle":"solid","strokeWidth":2,"roughness":0},
+    {"id":"m10-txt","type":"text","x":315,"y":370,"width":320,"height":60,"text":"M10 保存模板 (480px)\n触发: 点击💾保存\n---\n模板名称: [Input]\n分类: [Select: 能碳/设备/安全/商务/其他]\n描述: [TextArea]","fontSize":10,"fontFamily":1},
+    {"id":"preview-note","type":"text","x":60,"y":715,"width":800,"height":14,"text":"⚠ 关键: const [isPreview, setIsPreview] = useState(false) — 编辑/预览同一state，isPreview切换时只隐藏编辑UI，canvasItems+filters不变","fontSize":10,"fontFamily":1,"strokeColor":"#FAAD14"}
+  ],
+  "appState": {"gridSize":null,"viewBackgroundColor":"#f0f2f5"},
+  "files": {}
+}

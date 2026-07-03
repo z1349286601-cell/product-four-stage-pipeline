@@ -1,0 +1,143 @@
+# 页面清单.yaml — 港口集装箱理货数据分析平台
+# 版本: V1.0 | 日期: 2026-07-03
+# 供原型开发阶段 (Stage 4) 结构化读取
+
+pages:
+  - id: PC-01
+    name: 理货总览
+    route: /dashboard/overview
+    type: 分析看板
+    module: M2-理货总览
+    functions:
+      - 核心经营指标概览（KPI卡片）
+      - 箱量与效率趋势（Tab切换）
+      - 在港船舶进度
+      - 航线箱量分布
+      - 箱主/货种占比
+      - 效率热力图
+      - 码头效率对比
+      - 近期异常事件
+      - 船舶周转时间趋势
+      - 各班次效率对比
+      - 月度趋势汇总
+
+  - id: PC-02
+    name: 多维度分析
+    route: /analysis/multi-dim
+    type: 交互式多维分析页
+    module: M3-多维度分析
+    functions:
+      - 维度选择（行/列/筛选）
+      - 指标多选（箱量/效率/准确率/异常率）
+      - 交叉透视表（热力色阶+行列合计）
+      - 维度下钻图表（柱状/折线/堆叠切换）
+      - 维度对比雷达图
+      - 数据明细抽屉
+      - 保存分析视图
+
+  - id: PC-03
+    name: 异常管理
+    route: /exception/list
+    type: 数据列表 + 详情抽屉
+    module: M4-异常管理
+    functions:
+      - 异常概览统计条
+      - 异常趋势图（按类型堆叠）
+      - 异常分布（按类型/按码头）
+      - 异常事件列表（筛选/排序/分页）
+      - 异常详情抽屉（基本信息+数据快照+处理时间线）
+      - 状态流转（待处理→处理中→已关闭）
+      - 批量操作（认领/关闭）
+
+  - id: PC-04
+    name: 模板编辑器
+    route: /template/editor
+    type: 编辑器页
+    module: M5-模板编辑器
+    functions:
+      - 组件库面板（图表/文本/图片/表格/KPI卡/分隔线/地图）
+      - 拖拽式画布（react-grid-layout 12列网格）
+      - 属性面板（按选中组件切换）
+      - 编辑/预览双模式切换
+      - 撤销/重做
+      - 模板保存/导出
+
+  - id: PC-05
+    name: 报告中心
+    route: /report/center
+    type: 数据列表
+    module: M7-报告中心
+    functions:
+      - 报告概览统计
+      - 报告列表（筛选/排序/分页）
+      - 生成报告（选择模板/时间范围/格式）
+      - 报告下载/发送
+      - 定时发送任务配置
+      - 发送历史追溯
+
+  - id: PC-06
+    name: 系统管理
+    route: /system/admin
+    type: 配置管理页
+    module: M8-系统管理
+    functions:
+      - 用户管理（新增/编辑/停用/重置密码）
+      - 角色管理
+      - 角色权限矩阵（模块级读写权限）
+      - 码头信息配置
+      - 系统参数设置
+
+  - id: PC-07
+    name: 数据源配置
+    route: /data-source/config
+    type: 配置管理页
+    module: M1-数据接入
+    functions:
+      - TOS系统对接列表
+      - 连接测试
+      - 数据表映射配置
+      - 手动/定时同步
+      - 同步日志查询
+
+  - id: PC-08
+    name: 操作日志与监控
+    route: /log-monitor
+    type: 日志列表 + 监控面板
+    module: M9-日志与监控
+    functions:
+      - 操作日志列表（筛选/导出）
+      - 系统健康面板（5项核心服务心跳）
+      - API调用统计
+      - 告警规则配置
+      - 登录失败告警
+
+# 导航结构
+navigation:
+  - menu: 总览看板
+    icon: dashboard
+    pages: [PC-01]
+  - menu: 数据分析
+    icon: bar-chart
+    pages: [PC-02]
+  - menu: 异常中心
+    icon: warning
+    pages: [PC-03]
+  - menu: 模板与报告
+    icon: file-text
+    pages: [PC-04, PC-05]
+  - menu: 系统设置
+    icon: setting
+    pages: [PC-06, PC-07, PC-08]
+
+# 统计
+summary:
+  total_pages: 8
+  page_types:
+    分析看板: 1
+    交互式多维分析页: 1
+    数据列表: 1
+    数据列表+详情抽屉: 1
+    编辑器页: 1
+    配置管理页: 2
+    日志列表+监控面板: 1
+  total_modules: 8
